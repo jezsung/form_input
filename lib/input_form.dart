@@ -1,17 +1,17 @@
-library input_form;
+library form_input;
 
 import 'package:equatable/equatable.dart';
 
-abstract class InputForm<V, E> extends Equatable {
-  const InputForm.pure(this.value)
+abstract class FormInput<V, E> extends Equatable {
+  const FormInput.pure(this.value)
       : _pure = true,
         _error = null;
 
-  const InputForm.dirty(this.value)
+  const FormInput.dirty(this.value)
       : _pure = false,
         _error = null;
 
-  const InputForm.invalid(this.value, E error)
+  const FormInput.invalid(this.value, E error)
       : _pure = false,
         _error = error;
 
@@ -48,7 +48,7 @@ mixin FormMixin {
   bool get isInvalid => formStatus == FormStatus.invalid;
   bool get isValid => formStatus == FormStatus.valid;
 
-  List<InputForm> get inputs;
+  List<FormInput> get inputs;
 }
 
 enum FormStatus {
