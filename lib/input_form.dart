@@ -29,7 +29,7 @@ abstract class FormInput<V, E> extends Equatable {
 
   E? get error => _pure ? null : _error ?? validate(value);
 
-  E validate(V value);
+  E? validate(V value);
 
   @override
   List<Object?> get props => [status, value, error];
