@@ -39,9 +39,9 @@ mixin FormMixin {
   FormStatus get formStatus {
     return inputs.every((input) => input.status == FormStatus.pure)
         ? FormStatus.pure
-        : inputs.any((input) => input.status == FormStatus.invalid)
-            ? FormStatus.invalid
-            : FormStatus.valid;
+        : inputs.every((input) => input.status == FormStatus.valid)
+            ? FormStatus.valid
+            : FormStatus.invalid;
   }
 
   bool get isPure => formStatus == FormStatus.pure;
