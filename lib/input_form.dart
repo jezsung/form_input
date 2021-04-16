@@ -56,9 +56,3 @@ enum FormStatus {
   invalid,
   valid,
 }
-
-extension FormStatusX on FormStatus {
-  bool get isPure => this == FormStatus.pure;
-  bool get isInvalid => this == FormStatus.invalid;
-  bool get isValid => this == FormStatus.valid;
-}
