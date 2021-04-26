@@ -22,17 +22,17 @@ abstract class FormInput<V, E> extends Equatable {
   FormStatus get status {
     return _pure
         ? FormStatus.pure
-        : _error != null || validate(value) != null
+        : _error != null || validate() != null
             ? FormStatus.invalid
             : FormStatus.valid;
   }
 
-  E? get error => _pure ? null : _error ?? validate(value);
+  E? get error => _pure ? null : _error ?? validate();
 
-  E? validate(V value);
+  E? validate();
 
   @override
-  List<Object?> get props => [status, value, error];
+  List<Object?> get props => [value, _pure, _error];
 }
 
 mixin FormMixin {
