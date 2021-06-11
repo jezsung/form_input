@@ -2,6 +2,12 @@ library form_input;
 
 import 'package:equatable/equatable.dart';
 
+enum FormStatus {
+  pure,
+  invalid,
+  valid,
+}
+
 abstract class FormInput<V, E> extends Equatable {
   const FormInput.pure(this.value)
       : _pure = true,
@@ -27,6 +33,10 @@ abstract class FormInput<V, E> extends Equatable {
             : FormStatus.valid;
   }
 
+  bool get isPure => status == FormStatus.pure;
+  bool get isInvalid => status == FormStatus.invalid;
+  bool get isValid => status == FormStatus.valid;
+
   E? get error => _pure ? null : _error ?? validate();
 
   E? validate();
@@ -36,23 +46,9 @@ abstract class FormInput<V, E> extends Equatable {
 }
 
 mixin FormMixin {
-  FormStatus get formStatus {
-    return inputs.every((input) => input.status == FormStatus.pure)
-        ? FormStatus.pure
-        : inputs.any((input) => input.status == FormStatus.invalid)
-            ? FormStatus.invalid
-            : FormStatus.valid;
-  }
-
-  bool get isPure => formStatus == FormStatus.pure;
-  bool get isInvalid => formStatus == FormStatus.invalid;
-  bool get isValid => formStatus == FormStatus.valid;
+  bool get isPure => inputs.every((input) => input.status == FormStatus.pure);
+  bool get isInvalid => inputs.any((input) => input.status == FormStatus.invalid);
+  bool get isValid => inputs.every((input) => input.status == FormStatus.valid);
 
   List<FormInput> get inputs;
-}
-
-enum FormStatus {
-  pure,
-  invalid,
-  valid,
 }
