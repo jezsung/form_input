@@ -1,3 +1,7 @@
-## [0.0.1] - TODO: Add release date.
+## 0.1.0
 
-* TODO: Describe initial release.
+Initial Version of the library.
+
+• `FormInput.invalid()` constructor to make the `status` invalid forcefully
+
+• Includes the `validate` and `sanitize` function
