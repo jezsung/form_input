@@ -1,14 +1,30 @@
-# input_form
+## Introduction
 
-A new Flutter package.
+A simple form input representation helper class highly inspired by the `formz` package.
 
-## Getting Started
+## Examples
+``` dart
+class EmailInput extends FormInput<String, Exception> {
+  const EmailInput.pure([String value = '']) : super.pure(value);
+  const EmailInput.dirty(String value) : super.dirty(value);
+  // 'status' will be invalid, the validate function will be ignored.
+  const EmailInput.invalid(String value, Exception e) : super.invalid(value, e);
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+  @override
+  String sanitize(String value) {
+    // 'rawValue' will be the value before the sanitize function called.
+    // 'value' will be the value after the sanitize function called.
+    return value.trim();
+  }
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+  @override
+  Exception? validate(String value) {
+    if (value.isEmpty) {
+      // Return Exception in case the validation fails.
+      return FormatException('The email is empty.', value);
+    }
+    // Return null if the value is valid.
+    return null;
+  }
+}
+```
