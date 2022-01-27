@@ -1,20 +1,15 @@
-name: input_form
-description: A new Flutter package.
-version: 0.0.1
-author:
-homepage:
+name: form_input
+description: A form input representation class.
+version: 0.1.0
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.15.1 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  equatable: ^2.0.0
+  equatable: ^2.0.3
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-flutter:
+  flutter_lints: ^1.0.4
