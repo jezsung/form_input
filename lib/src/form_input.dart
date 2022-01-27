@@ -19,6 +19,8 @@ abstract class FormInput<V, E> extends Equatable {
   final E? _error;
   final bool _pure;
 
+  V get rawValue => _value;
+
   V get value => sanitize(_value);
 
   E? get error {
