@@ -3,6 +3,14 @@ import 'package:equatable/equatable.dart';
 import 'form_input_status.dart';
 
 abstract class FormInput<V, E> extends Equatable {
+  const FormInput({
+    required V value,
+    E? error,
+    bool pure = true,
+  })  : _value = value,
+        _error = error,
+        _pure = pure;
+
   const FormInput.pure(this._value)
       : _pure = true,
         _error = null;

@@ -1,6 +1,6 @@
 name: form_input
 description: A form input representation class.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/jezsung/form_input
 
 environment:

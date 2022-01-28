@@ -1,3 +1,7 @@
+## 0.1.1
+
+• feat: add the default constructor
+
 ## 0.1.0
 
 Initial Version of the library.
